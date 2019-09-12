@@ -1,0 +1,10 @@
+<% if @user.errors.any? %>
+	<% @user.errors.keys.each do |e| %>
+		$('input[name="user[' + "<%= e%>" +']"]').after('<small class="text-danger">'+'<%= @user.errors[e][0] %>'+'</small>');
+	<% end %>
+<% else %>
+  $('#user_form').modal('hide');
+	$('#success-message2').html('successfully updated');
+  $('#alert-success').show();
+  $('#projects_list').html("<%=j render partial: 'users_list', locals: {users: @users}%>");
+<% end %>

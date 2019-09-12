@@ -1,0 +1,77 @@
+<div class="modal fade" id="leaves_form" tabindex="-1" role="dialog"aria-labelledby="myModalLabel"   aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold edit-module"><%= @leave.new_record? ? 'Apply For Leave' : 'Edit Request'%></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form">
+          <div class="project-form">
+            <%= form_for(@leave, remote: true)do |f| %>
+              <div class="row form-group">
+              	<div class="col-md-2"> <label>Reason:</label></div>
+              	<div class="col-md-10 p-0">
+	            	  <%= f.text_area :reason, class: "form-control", required: true%>
+                  <small id="reason"></small>
+	              </div>
+	            </div>
+            	<small class="text-danger" id="name-error"></small>
+            	
+            	<div class="row form-group mt-3">
+              	<div class="col-md-2"> <label>From:</label></div>
+              	<div class="col-md-10 p-0  input-group">
+	            	  <%=f.text_field :from_date, class: "form-control date-picker", id:"date-picker-from", readonly: true, autocomplete: 'off',value: @leave.from_date.try(:strftime,'%d/%m/%Y'), required: true, placeholder: 'dd/mm/yyyy'%>
+	            	  <span class="input-group-append btn btn-primary fa fa-calendar"></span>
+	              </div>
+                <div class="col-md-2"></div>
+                  <small class="text-danger" id="from_date"></small>
+	            </div>
+
+	            <div class="row form-group mt-3">
+              	<div class="col-md-2"> <label>To:</label></div>
+              	<div class="col-md-10 p-0 input-group">	            	  
+              		<%=f.text_field :to_date, class: "form-control date-picker date-picker", id:"date-picker-to", readonly: true, autocomplete: 'off', value: @leave.to_date.try(:strftime,'%d/%m/%Y'), required: true, placeholder: 'dd/mm/yyyy'%>
+              		<span class="input-group-append btn btn-primary fa fa-calendar"></span>
+	              </div>
+                <div class="col-md-2"></div>
+                <small class="text-danger" id="to_date"></small>
+	            </div>
+	            <div class="row form-group">
+              	<div class="col-md-2"> <label>Head:</label></div>
+              	<div class="col-md-10 p-0">
+	            	  <input value='<%=current_user.name%>' class="form-control" readonly=true>
+	              </div>
+	            </div>
+
+	            <div class="row form-group">
+              	<div class="col-md-2"> <label>Apply Date:</label></div>
+              	<div class="col-md-10 p-0">
+	            	  <input value='<%= (@leave.created_at || Date.today).strftime('%d/%m/%Y')%>' class="form-control" readonly=true>
+	              </div>
+	            </div>
+            	<div class="float-right mt-2">
+            		<%= f.submit @leave.new_record? ? "Create" : 'Update', class:"btn btn-primary", onclick: "loader($(this));"%>
+            	</div>
+            <% end %>
+          </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {  
+  	$('#date-picker-from, #date-picker-to').datepicker({
+  	   format: 'dd/mm/yyyy',
+  	   minDate: new Date(),
+  	   changeMonth: true,
+  	   changeYear: true
+  	});
+  })
+  function loader(ele){
+    ele.before('<img src="https://media.tenor.com/images/95413c739191e2ae4bf97039e10ccd86/tenor.gif" style="width: 41px;margin-right:2px;" id="loader">'); 
+  }
+  </script>

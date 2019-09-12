@@ -5,18 +5,18 @@
     <%= image_tag 'logo.jpg', style: "height: 40px; width: 130px;"%>
   </a>
   <% if current_user.admin? %>
-	  <a href="/projects" class="header-icon text-white <%= (c == 'projects') ? 'active' : ''%>">
-	  	<i class="fa fa-file text-white" style="font-size: 31px;"></i><br>
-	    <small> Projects</small>
-	  </a>
-	  <a href="/developers" class="header-icon text-white <%= (c == 'developers') ? 'active' : ''%>">
+	  <a href="/users" class="header-icon text-white <%= (c == 'users' && a != 'settings') ? 'active' : ''%>">
 	    <i class="fa fa-users text-white" style="font-size: 31px;"></i><br>
-	    <small> Developers</small>
+	    <small> Users</small>
+	  </a>
+	   <a href="/users/settings" class="header-icon text-white <%= (a == 'settings') ? 'active' : ''%>">
+	  	<i class="fa fa-calendar text-white" style="font-size: 31px;"></i><br>
+	    <small> Settings</small>
 	  </a>
   <%else%>
-  	<a href="/todos" class="header-icon text-white <%= (c == 'todos') ? 'active' : ''%>">
+  	<a href="/leave_requests" class="header-icon text-white <%= (c == 'leave_requests') ? 'active' : ''%>">
 	  	<i class="fa fa-tasks text-white" style="font-size: 31px;"></i><br>
-	    <small> Todos</small>
+	    <small> Requests</small>
 	  </a>
 	<% end %>
 

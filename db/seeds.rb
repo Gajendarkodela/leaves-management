@@ -7,45 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 p "#"*100
 p "Admin Creation"
-p "email: admin@promobi.com"
+p "email: amita.verma@navaratan.com"
 p "password: admin123"
+p "name: Admin"
 p "#"*100
 admin = Admin.create({
 					name: 'admin',
-					email: 'admin@promobi.com',
-					password: 'admin123'
+					email: 'gajendarkodela@gmail.com',
+					password: 'admin123',
+          max_leaves: 20
 				})
-15.times do |counter|
-  Admin.first.projects.create({
-  	    name: "project#{counter}"
-      })
-
-  Developer.create({
-  	name: "developer#{counter}",
-  	email: "developer#{counter}@gmail.com",
-  	password: "developer#{counter}"
-  })
-
-end
-
-Project.all.each do |p|
-	7.times do |i|
-  	p.todos.create({
-  		description: "todo #{i}"
-  	})
-  end
-end
-
-Project.first.developers = Developer.where('id in (?)', [1,10])
-statuses = ['New', 'InPorgress', 'Done']
-Project.first.todos.each_with_index do |todo, index|
-	todo.developer_id = Developer.first.id
-	todo.status = statuses[index%3]
-	todo.save
-end
-
-p "*"*100
-p "one of developers login"
-p "email: developer0@gmail.com"
-p "password: developer0"
-p "*"*100

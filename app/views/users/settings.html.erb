@@ -1,0 +1,11 @@
+<%= form_tag action: 'update_settings', controller: 'users', method: "post" do %>
+<div class="col-md-4 mt-5">
+  <label> Maximum Leaves: </label>
+  <input type="number" name="max_leaves" value="<%= current_user.max_leaves%>"
+    class="form-control">
+  <div class="float-right mt-3">
+    <input type="submit" class="btn btn-primary">
+    <input type= "reset" class="btn btn-grey mr-2">
+  </div>
+ </div>
+<%end%>

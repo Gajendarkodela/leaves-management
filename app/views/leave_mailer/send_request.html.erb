@@ -1,0 +1,32 @@
+<p> <%= @user.email%> has requested leave. Below are the Details </p>
+
+<table>
+  <tr>
+    <td>Reason for Leave</td>
+    <td><%=@leave_request.reason</td>
+  </tr>
+  <tr>
+    <td> Period of Time</Period>
+    <td><%=@leave_request.from_date.strftime('%d/%m/%Y')%> to <%=@leave_request.to_date.strftime('%d/%m/%Y')%></td>
+  </tr>
+  <tr>
+    <td>Applied On</td>
+    <td><%= @leave_request.created_at.strftime('%d/%m/%Y')%></td>
+  </tr>
+</table>
+<form action= <%="http://localhost:3000/leave_requests/#{@leave_request.id}/respond_request"%> method= 'post'>
+ <input type="submit" value="accept" name="respond" style="
+    color: white;
+    background-color: blue;
+    border-radius: 2px;
+    padding: 5px;
+    font-size: 14px;
+">
+ <input type="submit" value="reject" name="respond" style="
+    color: white;
+    background-color: white;
+    border-radius: 2px;
+    padding: 5px;
+    font-size: 14px;
+">
+</form>

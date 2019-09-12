@@ -1,0 +1,12 @@
+<% if @leave.errors.any? %>
+  $('#loader').remove();
+	<% @leave.errors.keys.each do |e| %>
+		$('<%="##{e}"%>').html('<%= @leave.errors[e][0] %>');
+	<% end %>
+<%else%>
+	$('#name-error').html('');
+	$('#leaves_form').modal('hide');
+	$('#alert-success').show();
+	$('#success-message2').html('Leave Request modified successfully');
+	$('#leaves_list').html('<%=j render partial: "leaves_list",locals: { leaves: @leaves}%>')
+<% end %>

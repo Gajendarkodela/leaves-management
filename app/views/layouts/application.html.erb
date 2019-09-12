@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Projects Management</title>
+    <title>Leaves Management</title>
     <%= csrf_meta_tags %>
-
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.js'%>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css' %>
+
   </head>
 
   <body class="fixed-nav sticky-footer <%=current_user ? '' : 'bg-promo'%>">
@@ -16,8 +19,6 @@
     <div class="content-wrapper" id="main_body">
       <div class="renderer">
         
-      </div>
-      <div class="append_test_cases">
       </div>
       <div class="container">
         <%if flash[:notice].present?%>
