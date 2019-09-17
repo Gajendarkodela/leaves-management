@@ -4,7 +4,7 @@
 	 		<tr>
 	 			<td></td>
 	 			<td>Name</td>
-	 			<td>Email</td>
+	 			<td colspan="2">Email</td>
 	 		</tr>
 	 	</thead>
 	  <tbody>
@@ -12,12 +12,32 @@
 			 <tr>
 				 <td> <%= index+1 %></td>
 				 <td><%= link_to user.name, edit_user_path(user), remote: true %></td>
-				 <td> <%= user.email%>
+
+				 <td  colspan="2"> <%= user.email%> 
 				 	<div class="pull-right text-danger">
 				 		<%= link_to 'Remove', user_path(user), method: 'delete' %>
 				 	</div>
 				 </td>
 		   </tr>
+		   <thead>
+		   	<tr>
+		   		<th></th>
+		   		<th> Requests </th>
+		   		<th> From - To </th>
+		   		<th> Action </th>
+		   	</tr>
+		   	<%user.pending_requests.each do |req|%>
+		   		<tr>
+		   			<td></td>
+		   			<td> <%= req.reason %></td>
+		   			<td> 
+		   				<%= "#{req.from_date.strftime('%d/%m/%y')}- #{req.to_date.strftime('%d/%m/%y')}"  %></td>
+		   			<td>
+		   				<a class="text-primary" onClick="openPopup(<%= req.id %>)">respond</a>
+		   			</td>
+		   		</tr>
+		   	<%end%>
+		   </thead>
 			<% end %>
 		</tbody>
 	</table>	

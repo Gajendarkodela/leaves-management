@@ -9,11 +9,11 @@ p "#"*100
 p "Admin Creation"
 p "email: amita.verma@navaratan.com"
 p "password: admin123"
-p "name: Admin"
+p "name: Report Head"
 p "#"*100
 admin = Admin.create({
-					name: 'admin',
-					email: 'gajendarkodela@gmail.com',
+					name: 'Report Head',
+					email: 'amita.verma@navaratan.com',
 					password: 'admin123',
           max_leaves: 20
 				})

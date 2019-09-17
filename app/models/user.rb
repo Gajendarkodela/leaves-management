@@ -18,4 +18,8 @@ class User < ApplicationRecord
     (admin.max_leaves.to_i - leaves_taken.to_i)
   end
 
+  def pending_requests
+    leave_requests.where('status = ?', 'Applied')
+  end
+
 end

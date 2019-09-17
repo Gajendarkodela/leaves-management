@@ -4,3 +4,33 @@
 <h2> Users </h2>
 <%= render partial: 'users_list',locals: { users: @users}%>
 <div id="user-div"></div>
+
+<div class="modal fade" id="respond" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2"   aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold edit-module">
+        	Accept/Reject
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+      	Choose one of the response to the Request
+      </div>
+      <div class="modal-footer mx-3 float-right">
+	      <form method= 'post' id='form-respond'>
+				 <input type="submit" value="accept" name="respond" class="btn btn-primary">
+				 <input type="submit" value="reject" name="respond" class="btn ">
+	      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openPopup(id) {
+	 $('#respond').modal('show');
+	 $('#form-respond').attr('action', `leave_requests/${id}/respond_request`);
+  }
+</script>

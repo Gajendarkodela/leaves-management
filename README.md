@@ -13,17 +13,17 @@ This Project is to manages different Leave requests in a company. system allows 
  **Setup:**
 - **rails db:create**
 - **rails db:migrate**
-- **rails db:seed** 
+- **rails db:seed (Change Admin credentials in seeds.rb as per your requirements)** 
 
  **Note**
 - **After running rails db:seed Admin user will be Aautomatically created with name as 'Admin' email as *****@gmail.com and password is admin123**
 
  **Flows**
- Admin Login
-   Tabs - *Users* -List of Users belongs to the Admin
-        - *Settings* - To Configure Settings like Maximum leaves that are offered.
- Normal User Login
+- **Admin Login**
+   Tabs - **Users** -List of Users belongs to the Admin and each user's pending requests can be shown. Admin can Accept or Reject the request by logging in. 
+        - **Settings** - To Configure Settings like Maximum leaves that are offered.
+- **Normal User Login**
    Tabs
-     *User Profile Page* - Includes User Profile and Leave requests
+     **User Profile Page** - Includes User Profile and Leave requests
 
- Once Leave is Created or Modified, Admin will get mail with leave request details . Admin will either accept or reject the request from mail. Response will be send back to User. Note that To Accept or Reject the leave request admin must be logged in.
+**Once Leave is Created or Modified, Admin will get mail with leave request details . Admin will either accept or reject the request from mail. Response will be send back to User. Note that To Accept or Reject the leave request admin must be logged in.**
